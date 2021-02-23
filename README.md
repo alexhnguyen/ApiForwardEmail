@@ -1,14 +1,28 @@
-# Welcome to your CDK TypeScript project!
+# ApiForwardEmail
 
-This is a blank project for TypeScript development with CDK.
+This [aws-cdk](https://github.com/aws/aws-cdk) project creates an API gateway, saves the request into
+an S3 bucket, and sends an email notifying the owner a request has been sent.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+![apiForwardEmailDiagram](assets/apiForwardEmail.png)
 
-## Useful commands
+# Usage
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+To deploy it you need npm and aws-cdk installed.
+
+```
+git clone https://github.com/alexhnguyen/ApiForwardEmail.git
+cd ApiForwardEmail
+npm run build
+cdk deploy
+```
+
+After you deploy it you can see the URL of the API Gateway in the output
+
+```
+ ✅  ApiForwardEmailStack
+
+Outputs:
+ApiForwardEmailStack.ApiGatewayApiGatewayApiGatewayEndpointA04E016A = https://gbjlw62792.execute-api.us-west-2.amazonaws.com/prod/
+```
+
+To send a request to the API, you can use the [send_post.py](./send_post.py) file as a template.
